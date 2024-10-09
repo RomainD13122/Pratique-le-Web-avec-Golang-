@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 50%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Information à propos de la classe: {{.Nomdlc}}</h1>
+    <p><strong>Filiere:</strong> {{.Filiere}}</p>
+    <p><strong>Niveau:</strong> {{.Niveau}}</p>
+    <p><strong>Nombre d'étudiant:</strong> {{.Compteurdetudiant}}</p>
+    <h2>Liste des Etudiants</h2>
+    <table>
+        <tr>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Age</th>
+            <th>Sexe</th>
+        </tr>
+        {{range .Etudiants}}
+        <tr>
+            <td>{{.Prenom}}</td>
+            <td>{{.Nom}}</td>
+            <td>{{.Age}}</td>
+            <td>
+                {{if eq .Sexe "Homme"}}
+                <img src="/static/male.png" alt="Homme">
+                {{else if eq .Sexe "Femme"}}
+                <img src="/static/female.png" alt="Femme">
+                {{end}}
+            </td>
+        </tr>
+        {{end}}
+    </table>
+</body>
+</html>
